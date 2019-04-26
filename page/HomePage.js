@@ -10,7 +10,7 @@ import React, {Component} from 'react';
 import { Button } from 'react-native'
 import {StyleSheet, Text, View} from 'react-native';
 
-export default class page1 extends Component{
+export default class HomePage extends Component{
   static navigationOptions = {
     title: 'Home',
     headerBackTitle: '哈哈哈哈😄'
@@ -24,19 +24,19 @@ export default class page1 extends Component{
         <Button
           title={'Go to Page1'}
           onPress={() => {
-            navigation.navigete('Page1', {name: '动态的'})
+            navigation.navigate('Page1', {name: '动态的'})
           }}
         ></Button>
         <Button
           title={'Go to Page2'}
           onPress={() => {
-            navigation.navigete('Page2')
+            navigation.navigate('Page2')
           }}
         ></Button>
         <Button
           title={'Go to Page3'}
           onPress={() => {
-            navigation.navigete('Page3', {name: 'devio'})
+            navigation.navigate('Page3', {mode: 'edit'})
           }}
         ></Button>
       </View>

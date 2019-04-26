@@ -10,8 +10,12 @@ import React, {Component} from 'react';
 import { Button } from 'react-native'
 import {StyleSheet, Text, View} from 'react-native';
 
-type props = {};
-export default class page1 extends Component<Props> {
+export default class page1 extends Component {
+  static navigationOptions = {
+    title: 'page1',
+    headerBackTitle: 'page1back😄'
+  }
+
   render() {
     const {navigation} = this.props;
 
@@ -27,7 +31,7 @@ export default class page1 extends Component<Props> {
         <Button
           title={'Go Page4'}
           onPress={() => {
-            navigation.navigete('Page4')
+            navigation.navigate('Page4')
           }}
         ></Button>
       </View>
@@ -43,10 +47,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });

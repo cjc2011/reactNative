@@ -9,8 +9,7 @@
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 
-type props = {};
-export default class page2 extends Component<Props> {
+export default class page2 extends Component {
   render() {
     return (
       <View style={styles.container}>
@@ -28,10 +27,5 @@ const styles = StyleSheet.create({
     fontSize: 20,
     textAlign: 'center',
     margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
+  }
 });
