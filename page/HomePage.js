@@ -11,9 +11,13 @@ import { Button } from 'react-native'
 import {StyleSheet, Text, View} from 'react-native';
 
 export default class page1 extends Component{
+  static navigationOptions = {
+    title: 'Home',
+    headerBackTitle: '哈哈哈哈😄'
+  }
+
   render() {
     const {navigation} = this.props;
-
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>welcome to HomePage</Text>

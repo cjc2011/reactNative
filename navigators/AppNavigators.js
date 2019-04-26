@@ -1,10 +1,11 @@
+import React, {Component} from 'react';
 import { createStackNavigator } from 'react-navigation'
 import { Button } from 'react-native'
-import HomePage from '../page/HomePage'
-import Page1 from '../page/page1'
-import Page2 from '../page/page2'
-import Page3 from '../page/page3'
-import Page4 from '../page/page4'
+import HomePage from '../page/HomePage.js'
+import Page1 from '../page/page1.js'
+import Page2 from '../page/page2.js'
+import Page3 from '../page/page3.js'
+import Page4 from '../page/page4.js'
 import Page5 from '../page/page5'
 
 export const AppStackNavigator = createStackNavigator({
