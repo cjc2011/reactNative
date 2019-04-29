@@ -7,8 +7,7 @@
  */
 
 import React, {Component} from 'react';
-import { Button } from 'react-native'
-import {StyleSheet, Text, View} from 'react-native';
+import {StyleSheet, Text, View, Button} from 'react-native';
 
 export default class HomePage extends Component{
   static navigationOptions = {
@@ -49,6 +48,13 @@ export default class HomePage extends Component{
           title={'Go yo Top'}
           onPress={() => {
             navigation.navigate('Top')
+          }}
+        ></Button>
+        <Button
+          title={'Go yo Drawer'}
+          onPress={() => {
+            // console.log(navigation, 'navigation')
+            navigation.navigate('Drawer')
           }}
         ></Button>
       </View>

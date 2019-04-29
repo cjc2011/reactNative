@@ -34,6 +34,12 @@ export default class page1 extends Component {
             navigation.navigate('Page4')
           }}
         ></Button>
+        <Button
+          title={'page1 open drawer'}
+          onPress={() => {
+            navigation.openDrawer()
+          }}
+        ></Button>
       </View>
     );
   }

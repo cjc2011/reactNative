@@ -1,13 +1,54 @@
 import React, {Component} from 'react';
-import { createStackNavigator, createMaterialTopTabNavigator, createBottomTabNavigator} from 'react-navigation'
-import { Button, Platform } from 'react-native'
+import { createStackNavigator, createMaterialTopTabNavigator, createBottomTabNavigator, createDrawerNavigator} from 'react-navigation'
+import { Button, Platform, ScrollView, SafeAreaView, DrawerItems} from 'react-native'
 import HomePage from '../page/HomePage.js'
 import Page1 from '../page/page1.js'
 import Page2 from '../page/page2.js'
 import Page3 from '../page/page3.js'
 import Page4 from '../page/page4.js'
-import Page5 from '../page/page5'
-import IosIcon from 'react-native-vector-icons/FontAwesome5'
+import Page5 from '../page/page5.js'
+import IosIcon from 'react-native-vector-icons/Ionicons'
+
+const DrawerNavigator = createDrawerNavigator({
+  Page1: {
+    screen: Page1,
+    navigationOptions: {
+      title: 'drawer-page1',
+      drawerLabel: 'Label-drawer-page1',
+      drawerIcon: ({tintColor}) => {
+        return <IosIcon
+                name={'ios-home'}
+                size={23}
+                style={{color: tintColor}}
+        /> 
+      }
+    }
+  },
+  Page2: {
+    screen: Page2,
+    navigationOptions: {
+      title: 'drawer-page2',
+      drawerIcon: ({tintColor}) => {
+        return <IosIcon
+          name={'move-to-inbox'}
+          size={23}
+          style={{color: tintColor}}
+        ></IosIcon>
+      }
+    }
+  }
+}, {
+  order: ['Page1', 'Page2'],
+  initialRouteName: 'Page1',
+  ContentComponent: (props) => (
+    <ScrollView>
+      <SafeAreaView forceInset={{ top: 'always', horizontal: 'never' }}>
+        <DrawerItems {...props} />
+      </SafeAreaView>
+    </ScrollView>
+  ),
+  drawerWidth: 250,
+})
 
 const AppTopNavigator = createMaterialTopTabNavigator({
   Page1: {
@@ -67,7 +108,7 @@ const AppBottomNavigator = createBottomTabNavigator({
       tabBarLabel: '最热',
       tabBarIcon: ({tintColor, focused}) => (
         <IosIcon
-          name={focused ? 'ios-home' : 'ios-home-outline'}
+          name={'ios-home'}
           size={26}
           style={{color: tintColor}}
         /> 
@@ -172,6 +213,12 @@ export const AppStackNavigator = createStackNavigator({
     screen: AppTopNavigator,
     navigationOptions: {
       title: 'TopNavigator'
+    }
+  },
+  Drawer: {
+    screen: DrawerNavigator,
+    navigationOptions: {
+      title: 'this is drawernavigator'
     }
   }
   
