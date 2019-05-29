@@ -16,47 +16,10 @@ export default class HomePage extends Component{
   }
 
   render() {
-    const {navigation} = this.props;
+  
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>welcome to HomePage</Text>
-        <Button
-          title={'Go to Page1'}
-          onPress={() => {
-            navigation.navigate('Page1', {name: '动态的'})
-          }}
-        ></Button>
-        <Button
-          title={'Go to Page2'}
-          onPress={() => {
-            navigation.navigate('Page2')
-          }}
-        ></Button>
-        <Button
-          title={'Go to Page3'}
-          onPress={() => {
-            navigation.navigate('Page3', {mode: ''})
-          }}
-        ></Button>
-        <Button
-          title={'Go yo Bottom'}
-          onPress={() => {
-            navigation.navigate('Bottom')
-          }}
-        ></Button>
-        <Button
-          title={'Go yo Top'}
-          onPress={() => {
-            navigation.navigate('Top')
-          }}
-        ></Button>
-        <Button
-          title={'Go yo Drawer'}
-          onPress={() => {
-            // console.log(navigation, 'navigation')
-            navigation.navigate('Drawer')
-          }}
-        ></Button>
+        <Text>HomePage</Text>
       </View>
     );
   }

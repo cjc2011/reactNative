@@ -8,7 +8,6 @@
 
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
-import FlexBox from './flexBox.js'
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -25,7 +24,6 @@ export default class App extends Component<Props> {
         <Text style={styles.welcome}>今天很开心1</Text>
         <Text style={styles.instructions}>To get started, edit App.js1</Text>
         <Text style={styles.instructions}>{instructions}</Text>
-        <FlexBox></FlexBox>
       </View>
     );
   }
