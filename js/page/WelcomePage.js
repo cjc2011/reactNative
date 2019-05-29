@@ -1,23 +1,24 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- * @flow
- */
-
 import React, {Component} from 'react';
 import {StyleSheet, Text, View, Button} from 'react-native';
+import NavigationUtil from '../navgators/NavigationUtil.js'
 
 export default class WelcomePage extends Component{
+  componentDidMount() {
+    setTimeout( () => {
+      NavigationUtil.resetToHomePage(this.props)
+    }, 500)
+  }
+
+  componentWillMount() {
+    this.timer && clearTimeout(this.timer)
+  }
+
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>welcome Page</Text>
-        <Text style={styles.welcome}>welcome Page</Text>
-        <Text style={styles.welcome}>welcome Page</Text>
-        <Text style={styles.welcome}>welcome Page</Text>
-        <Text style={styles.welcome}>welcome Page</Text>
+        <Text style={styles.welcome}>welcome Pag11e</Text>
+        <Text style={styles.welcome}>welcome Pag11e</Text>
+        <Text style={styles.welcome}>welcome Pag11e</Text>
       </View>
     );
   }
