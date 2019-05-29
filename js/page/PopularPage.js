@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, Text, View, Button} from 'react-native'
+import NavigationUtil from '../navgators/NavigationUtil.js'
 import { 
   createMaterialTopTabNavigator,
   createAppContainer
@@ -33,11 +34,14 @@ export default class PopularPage extends Component {
 
 class PopularTab extends Component {
   render() {
-    console.log(this.props, 'this.props')
     const { tabLabel } = this.props;
     return (
       <View style={styles.container}>
         <Text>111</Text>
+        <Text onPress={ () => {
+          console.log('/onPress')
+          this.props.navigation.navigate('DetailPage')
+        }}>点击转跳到详情页面</Text>
       </View>
       
     )
