@@ -16,9 +16,10 @@ import {
   createBottomTabNavigator,
   createAppContainer
  } from 'react-navigation'
- import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
- import EntypoIcons from 'react-native-vector-icons/Entypo'
-
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
+import EntypoIcons from 'react-native-vector-icons/Entypo'
+import NavigationUtil from '../navgators/NavigationUtil.js'
+import EynamicTabNavigator from '../navgators/EynamicTabNavigator.js'
 
 let iconSize = 26
 export default class HomePage extends Component{
@@ -87,9 +88,10 @@ export default class HomePage extends Component{
   }
   
   render() {
+    NavigationUtil.navigation = this.props.navigation
     const Tab = createAppContainer(this._tabNavigator())
     return (
-      <Tab></Tab>
+      <EynamicTabNavigator></EynamicTabNavigator>
     )
   }
 }

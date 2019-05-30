@@ -13,12 +13,12 @@ export default class DetailPage extends Component{
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>DetailPage Page</Text>
-        <Text style={styles.welcome}>DetailPage Page</Text>
-        <Text style={styles.welcome}>DetailPage Page</Text>
-        <Text style={styles.welcome}>DetailPage Page</Text>
-        <Text style={styles.welcome}>DetailPage Page</Text>
-        <Text style={styles.welcome}>DetailPage Page</Text>
+        <Text style={styles.welcome}>详情 Page</Text>
+        <Text style={styles.welcome}>详情 Page</Text>
+        <Text style={styles.welcome}>详情 Page</Text>
+        <Text style={styles.welcome}>详情 Page</Text>
+        <Text style={styles.welcome}>详情 Page</Text>
+        <Text style={styles.welcome}>详情 Page</Text>
       </View>
     );
   }

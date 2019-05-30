@@ -6,6 +6,7 @@ import {
   createAppContainer
  } from 'react-navigation'
 
+
 // 流行
 export default class PopularPage extends Component {
   render() {
@@ -39,8 +40,9 @@ class PopularTab extends Component {
       <View style={styles.container}>
         <Text>111</Text>
         <Text onPress={ () => {
-          console.log('/onPress')
-          this.props.navigation.navigate('DetailPage')
+          let navigation = NavigationUtil.navigation
+          console.log(NavigationUtil.navigation, 'NavigationUtil.navigation')
+          NavigationUtil.goPage({navigation}, 'DetailPage')
         }}>点击转跳到详情页面</Text>
       </View>
       
