@@ -9,24 +9,45 @@ import {
 
 // 流行
 export default class PopularPage extends Component {
-  render() {
-    const TabNavigator = createMaterialTopTabNavigator({
-      PopularTab1: {
-        screen: PopularTab,
+  constructor(props) {
+    super(props)
+    this.tabNames = ['Java', 'Android', 'IOS', 'Vue', 'React', 'React Native', 'PHP']
+  }
+
+  _genTabs() {
+    const tabs = {}
+    this.tabNames.forEach( (item, index) => {
+      tabs[`tab${index}`] = {
+        screen: props => {
+          console.log(props, 'props')
+          return <PopularTab 
+            {...props}
+            tabLabel={item}
+          ></PopularTab>
+        },
         navigationOptions: {
-          title: 'Tab1'
-        }
-      },
-      PopularTab2: {
-        screen: PopularTab,
-        navigationOptions: {
-          title: 'Tab2'
+          title: item
         }
       }
     })
-    let Toptab = createAppContainer(TabNavigator)
+    return createMaterialTopTabNavigator(tabs, {
+      tabBarOptions: {
+        tabStyle: styles.tabStyle,
+        upperCaseLabel: false, //设置标签内容是否大写
+        scrollEnabled: true,     //是否支持选项卡滚动
+        indicatorStyle: styles.indicatorStyle,
+        labelStyle: styles.labelStyle,
+        style: {
+          backgroundColor: '#678'
+        }
+      }
+    })
+  }
+
+  render() {
+    let Toptab = createAppContainer(this._genTabs())
     return (
-      <View style={{flex: 1, marginTop: 40, backgroundColor: '#f20223'}}>
+      <View style={{height: 160, flex: 1, marginTop: 40, backgroundColor: 'red'}}>
         <Toptab></Toptab>
       </View>
     )
@@ -38,10 +59,9 @@ class PopularTab extends Component {
     const { tabLabel } = this.props;
     return (
       <View style={styles.container}>
-        <Text>111</Text>
+        <Text>{tabLabel}</Text>
         <Text onPress={ () => {
           let navigation = NavigationUtil.navigation
-          console.log(NavigationUtil.navigation, 'NavigationUtil.navigation')
           NavigationUtil.goPage({navigation}, 'DetailPage')
         }}>点击转跳到详情页面</Text>
       </View>
@@ -52,7 +72,9 @@ class PopularTab extends Component {
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    backgroundColor: 'yellow',
+    color: '#999'
   },
   welcome: {
     fontSize: 20,
@@ -65,4 +87,16 @@ const styles = StyleSheet.create({
     color: '#333333',
     marginBottom: 5,
   },
+  indicatorStyle: {
+    height: 2,
+    backgroundColor: 'yellow'
+  },
+  labelStyle: {
+    fontSize: 13,
+    marginTop: 6,
+    marginBottom: 6
+  },
+  tabStyle: {
+    minWidth: 50,
+  }
 });
