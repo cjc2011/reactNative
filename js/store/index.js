@@ -1,29 +1,20 @@
 import {
   createStore,
-  applyMiddleware,
-  combineReducers
+  applyMiddleware
 } from 'redux'
+import thunk from 'redux-thunk'
 import React, { Component } from 'react'
-import { Provider } from 'react-redux';
-import { createNavigationReducer } from 'react-navigation-redux-helpers'
-import { RootNaviagtor, middlewar, AppWithNavigationState } from '../navgators/AppNavigator.js'
+import reducers from '../reducer/index.js'
+import { middlewar } from '../navgators/AppNavigator.js'
 
-const navReducer = createNavigationReducer(RootNaviagtor)
-const appReducer = combineReducers({
-  nav: navReducer
-})
+const middleware = [
+  middlewar
+]
 
-const store = createStore(
-  appReducer,
-  applyMiddleware(middlewar)
-);
+// 创建store
+export default createStore(
+  reducers,
+  applyMiddleware(...middleware)
+)
 
-export default class Root extends Component{
-  render() {
-    return (
-      <Provider store={store}>
-        <AppWithNavigationState />
-      </Provider>
-    )
-  }
-}
+

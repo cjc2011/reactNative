@@ -19,7 +19,6 @@ export default class PopularPage extends Component {
     this.tabNames.forEach( (item, index) => {
       tabs[`tab${index}`] = {
         screen: props => {
-          console.log(props, 'props')
           return <PopularTab 
             {...props}
             tabLabel={item}

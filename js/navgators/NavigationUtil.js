@@ -12,7 +12,6 @@ export default class NavigationUtil {
     if (!navigation) {
       console.log('navigation can not be null')
     }
-    console.log(navigation.navigate, 'navigation')
     navigation.navigate(
       page,
       {...params}

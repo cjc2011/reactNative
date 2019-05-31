@@ -20,6 +20,7 @@ import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import EntypoIcons from 'react-native-vector-icons/Entypo'
 import NavigationUtil from './NavigationUtil.js'
 import {BottomTabBar} from 'react-navigation-tabs'
+import { connect } from 'react-redux'
 
 let iconSize = 26
 const TABS = {
@@ -76,38 +77,38 @@ const TABS = {
     }
   }
 }
-
-export default class EynamicTabNavigator extends Component{
+class EynamicTabNavigator extends Component{
   constructor(props) {
     super(props)
-    console.disableYellowBox = true 
   }
 
-  componentDidMount() {
-    let { navigation } = this.props 
-    setTimeout( () => {
-      // navigation.navigate('DetailPage')
-    }, 3000)
-  }
-
+  //动态生成底部标签
   _tabNavigator() {
+    if (this.Tabs) {
+      return this.Tabs
+    }
     const {PopularPage, TrendingPage, FavoritePage, MyPage}  = TABS
     const tabs = { PopularPage, TrendingPage, FavoritePage, MyPage }
     PopularPage.navigationOptions.tabBarLabel = '最冷'   //动态配置Tab属性
-    return createBottomTabNavigator(tabs, {
-      tabBarComponent: tabBarComponent
+
+    const Navbar = createBottomTabNavigator(tabs, {
+      tabBarComponent: props => {
+        return <TabBarComponent theme={this.props.theme} {...props}></TabBarComponent>
+      }
     });
+    return this.Tabs = createAppContainer(Navbar)
   }
   
   render() {
-    const Tab = createAppContainer(this._tabNavigator())
+    const Tab = this._tabNavigator()
     return (
       <Tab></Tab>
     )
   }
 }
 
-class tabBarComponent extends Component{
+// 重写底部导航栏tab组件
+class TabBarComponent extends Component{
   constructor(props) {
     super(props)
     this.theme = {
@@ -117,36 +118,18 @@ class tabBarComponent extends Component{
   }
 
   render() {
-    const {routes, index} = this.props.navigation.state;
-    console.log(routes, index)
-    if (routes[index].params) {
-      const {theme} = routes[index].params 
-      if (theme && theme.updateTime > this.theme.updateTime) {
-        console.log('update theme')
-        this.theme = theme
-      }
-    }
     return (
       <BottomTabBar
         {...this.props}
-        activeTintColor={this.theme.tintColor || this.props.activeTintColor}
+        activeTintColor={this.props.theme}
       ></BottomTabBar>
     )
   }
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1
-  },
-  home: {
-    fontSize: 20,
-    textAlign: 'center',
-    margin: 10,
-  },
-  instructions: {
-    textAlign: 'center',
-    color: '#333333',
-    marginBottom: 5,
-  },
-});
+const mapStateToProps = state => ({
+  theme: state.theme.theme
+})
+
+export default connect(mapStateToProps)(EynamicTabNavigator)
+

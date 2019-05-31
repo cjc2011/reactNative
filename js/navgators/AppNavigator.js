@@ -41,12 +41,11 @@ export const RootNaviagtor = createSwitchNavigator({
   Init: InitNavigator,
   Main: MainNavigator
 },{
+  initialRouteName: 'Init',
   navigationOptions: {
     header: null
   }
 })
-
-// export const navReducer = 
 
 export const middlewar = createReactNavigationReduxMiddleware(
   state => state.nav
@@ -57,5 +56,7 @@ const WithNavigationState = createReduxContainer(RootNaviagtor)
 const mapStateToProps = (state) => ({
   state: state.nav    // v2
 })
+
+export const rootCom = 'Init'
 
 export const AppWithNavigationState = connect(mapStateToProps)(WithNavigationState)
