@@ -22,21 +22,3 @@ const index = combineReducers({
 })
 
 export default index
-
-
-
-// ============== 
-// const store = createStore(
-//   appReducer,
-//   applyMiddleware(middlewar)
-// );
-
-// export default class Root extends Component{
-//   render() {
-//     return (
-//       <Provider store={store}>
-//         <AppWithNavigationState />
-//       </Provider>
-//     )
-//   }
-// }

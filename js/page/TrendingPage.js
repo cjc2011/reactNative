@@ -17,7 +17,6 @@ class TrendingPage extends Component {
               tintColor: 'red',
               updateTime: new Date().getTime()
             }
-            console.log('改变颜色')
             this.props.onThemeChange('red')
           }}></Button>
       </View>

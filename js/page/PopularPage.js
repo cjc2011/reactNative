@@ -63,6 +63,20 @@ class PopularTab extends Component {
           let navigation = NavigationUtil.navigation
           NavigationUtil.goPage({navigation}, 'DetailPage')
         }}>点击转跳到详情页面</Text>
+        <Button 
+          title={'fetchDemo'}
+          onPress={ () => {
+            let navigation = NavigationUtil.navigation
+            NavigationUtil.goPage({navigation}, 'FetchDemo')
+          }}
+        ></Button>
+        <Button 
+          title={'数据存储'}
+          onPress={ () => {
+            let navigation = NavigationUtil.navigation
+            NavigationUtil.goPage({navigation}, 'AsyncDemo')
+          }}
+        ></Button>
       </View>
       
     )
