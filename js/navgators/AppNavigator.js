@@ -13,6 +13,7 @@ import {
  import DetailPage from '../page/DetailPage.js'
  import FetchDemo from '../page/FetchDemo.js'
  import AsyncDemo from '../page/AsyncDemo.js'
+ import DataStoreDemoPage from '../page/DataStoreDemoPage.js'
  
 const InitNavigator = createStackNavigator({
   WelcomePage: {
@@ -44,6 +45,12 @@ const MainNavigator = createStackNavigator({
   },
   AsyncDemo: {
     screen: AsyncDemo,
+    navigationOptions: {
+      header: null
+    }
+  },
+  DataStoreDemoPage: {
+    screen: DataStoreDemoPage,
     navigationOptions: {
       header: null
     }

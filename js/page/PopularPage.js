@@ -77,6 +77,13 @@ class PopularTab extends Component {
             NavigationUtil.goPage({navigation}, 'AsyncDemo')
           }}
         ></Button>
+        <Button 
+          title={'数据请求离线缓存测试'}
+          onPress={ () => {
+            let navigation = NavigationUtil.navigation
+            NavigationUtil.goPage({navigation}, 'DataStoreDemoPage')
+          }}
+        ></Button>
       </View>
       
     )

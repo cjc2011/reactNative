@@ -19,7 +19,6 @@ export default class FetchDemo extends Component {
       .then( res => {
         if (res.ok) return res.text()
         throw new Error('Nextwork error')
-        
       })
       .then( res => {
         this.setState({
