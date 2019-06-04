@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Text, View, StyleSheet, TextInput } from 'react-native'
+import { SectionList, FlatList, ScrollView, Text, View, StyleSheet, TextInput } from 'react-native'
 import DataStore from '../expand/dao/DataStore.js'
 
 let getApi = new DataStore()
@@ -53,7 +53,44 @@ export default class DataStoreDemoPage extends Component {
             }}
           >获取数据</Text> 
         </View>
-        <Text>{this.state.showText}</Text>
+        <Text>{this.state.showText.data}</Text>
+        {/* <ScrollView style={{height: 600, borderColor: 'black', borderWidth: 1}}>
+          <Text>===11111111111===</Text>
+          <Text>11111111111</Text>
+          <Text>11111111111</Text>
+          <Text>11111111111</Text>
+          <Text>11111111111</Text>
+          <Text>11111111111</Text>
+          <Text>22222222222</Text>
+          <Text>22222222222</Text>
+          <Text>22222222222</Text>
+          <Text>22222222222</Text>
+          <Text>22222222222</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+          <Text>33333333333</Text>
+        </ScrollView> */}
+        <SectionList
+          sections={[
+            {title: 'D', data: ['Devin']},
+            {title: 'J', data: ['Jackson', 'James', 'Jillian', 'Jimmy', 'Joel', 'John', 'Julie']},
+          ]}
+          renderItem={({item}) => <Text style={styles.item}>{`${item}`}</Text>}
+          renderSectionHeader={({section}) => <Text style={styles.sectionHeader}>{section.title}</Text>}
+          keyExtractor={(item, index) => index}
+        />
       </View>
     )
   }
@@ -69,5 +106,10 @@ const styles = StyleSheet.create({
   input: {
     borderColor: 'blue',
     borderWidth: 1
+  },
+  item: {
+    padding: 10,
+    fontSize: 18,
+    height: 44,
   }
 })
