@@ -1,5 +1,5 @@
-import { onThemeChange } from './theme/index.js'
+import { onLoadPopularData } from './popular/index.js'
 
 export default {
-  onThemeChange
+  onLoadPopularData
 }

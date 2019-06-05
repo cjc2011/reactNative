@@ -13,7 +13,7 @@ class FavoritePage extends Component {
         <Button
           title="修改主题"
           onPress={ () => {
-            this.props.changeTheme('yellow')
+            
           }}
         ></Button>
       </View>

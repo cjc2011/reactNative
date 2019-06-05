@@ -13,7 +13,6 @@ export default class DataStoreDemoPage extends Component {
   }
 
   lodaData() {
-    console.log('////////')
     let url = `https://api.github.com/search/repositories?q=${this.value}`
     getApi.fetchData(url)
       .then(data => {

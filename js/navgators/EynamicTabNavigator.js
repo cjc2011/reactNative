@@ -128,7 +128,7 @@ class TabBarComponent extends Component{
 }
 
 const mapStateToProps = state => ({
-  theme: state.theme.theme
+  // theme: state.theme.theme
 })
 
 export default connect(mapStateToProps)(EynamicTabNavigator)

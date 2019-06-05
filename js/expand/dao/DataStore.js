@@ -26,7 +26,7 @@ export default class DataStore {
     return new Promise( (resolve, reject) => {
       this.fetchLocalData(url)
         .then(data => {
-          let bool = this.checkTimestampValid(data.timestamp)
+          let bool = DataStore.checkTimestampValid(data.timestamp)
           if (data && bool) {
             resolve(data)
           } else {
