@@ -1,10 +1,17 @@
 import React, {Component} from 'react'
 import {View, Image, Text, TouchableOpacity, StyleSheet, Button} from 'react-native'
+import FontAwesome from 'react-native-vector-icons/FontAwesome'
 
 export default class PopularItem extends Component {
   render() {
     const {item} = this.props
     if (!item || !item.owner) return null 
+    let favoriteButton = <TouchableOpacity 
+                            style={{padding: 6}} 
+                            underlayColor={'transparent'}
+                         >
+                           <FontAwesome name={'star-o'} size={26} style={{color: 'red'}}></FontAwesome>
+                        </TouchableOpacity> 
     return <TouchableOpacity
       onPress={()=>{
         this.props.onSelect()
@@ -21,7 +28,7 @@ export default class PopularItem extends Component {
           {item.description}
         </Text>
         <View style={styles.row}>
-          <View>
+          <View style={styles.row}>
             <Text>Author:</Text>
             <Image style={{height:22,width:22}} source={{uri:item.owner.avatar_url}} />
           </View>
@@ -29,6 +36,7 @@ export default class PopularItem extends Component {
             <Text>Start:</Text>
             <Text>{item.stargazers_count}</Text>
           </View>
+          {favoriteButton}
         </View>
       </View>
     </TouchableOpacity>
@@ -38,12 +46,12 @@ export default class PopularItem extends Component {
 const styles = StyleSheet.create({
   description: {
     fontSize: 13,
-    // marginBotton: 2,
+    marginBottom: 2,
     color: '#757575'
   },
   title: {
     fontSize: 16,
-    // marginBotton: 2,
+    marginBottom: 2,
     color: '#212121'
   },
   row: {
@@ -61,7 +69,7 @@ const styles = StyleSheet.create({
     borderWidth: 0.5,
     borderRadius: 2,
     shadowColor: 'gray',
-    // shadowOffse: {width: 0.5, height: 0.5},
+    shadowOffset:{  width: 0.5,  height: 0.5,},
     shadowOpacity: 0.4,
     shadowRadius: 1,
     elevation: 2

@@ -1,5 +1,6 @@
-import { onLoadPopularData } from './popular/index.js'
+import { onRefreshPopular, onLoadMorePopular } from './popular/index.js'
 
 export default {
-  onLoadPopularData
+  onRefreshPopular,
+  onLoadMorePopular
 }

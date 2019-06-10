@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import {StyleSheet, Text, View, Button} from 'react-native';
+import {StyleSheet, Text, View} from 'react-native';
 import NavigationUtil from '../navgators/NavigationUtil.js'
 
 export default class WelcomePage extends Component{
@@ -17,8 +17,6 @@ export default class WelcomePage extends Component{
     return (
       <View style={styles.container}>
         <Text style={styles.welcome}>welcome Pag11e</Text>
-        <Text style={styles.welcome}>welcome Pag11e</Text>
-        <Text style={styles.welcome}>welcome Pag11e</Text>
       </View>
     );
   }
@@ -26,7 +24,8 @@ export default class WelcomePage extends Component{
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1
+    flex: 1,
+    marginTop: 40
   },
   welcome: {
     fontSize: 20,

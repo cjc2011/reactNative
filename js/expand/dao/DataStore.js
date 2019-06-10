@@ -1,4 +1,4 @@
-import { AsyncStorage } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage';
 
 export default class DataStore {
   // 静态方法 不会被实例继承 只可以通过类调用

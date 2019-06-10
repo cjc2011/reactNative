@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
-import { Text, View, Button, StyleSheet, AsyncStorage, TextInput } from 'react-native'
+import { Text, View, Button, StyleSheet, TextInput } from 'react-native'
+import AsyncStorage from '@react-native-community/async-storage'
 
 const KEY = 'save_key'
 

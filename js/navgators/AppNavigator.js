@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import { 
   createStackNavigator, 
-  createMaterialTopTabNavigator,
-  createBottomTabNavigator,
-  createSwitchNavigator,
-  createAppContainer
+  createSwitchNavigator
  } from 'react-navigation'
- import { Provider, connect } from 'react-redux';
- import { createReactNavigationReduxMiddleware, createReduxContainer, createNavigationReducer } from 'react-navigation-redux-helpers'
+ import { connect } from 'react-redux';
+ import { createReactNavigationReduxMiddleware, createReduxContainer } from 'react-navigation-redux-helpers'
  import WelcomePage from '../page/WelcomePage.js'
  import HomePage from '../page/HomePage.js'
  import DetailPage from '../page/DetailPage.js'
