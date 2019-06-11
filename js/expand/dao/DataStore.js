@@ -1,4 +1,6 @@
 import AsyncStorage from '@react-native-community/async-storage';
+import Trending from 'GitHubTrending'
+export const FLAG_STORAGE = {flag_popular: 'popular', flag_trending: 'trending'}
 
 export default class DataStore {
   // 静态方法 不会被实例继承 只可以通过类调用
@@ -22,7 +24,7 @@ export default class DataStore {
    * @param {*} url
    * @memberof DataStore
    */
-  fetchData(url) {
+  fetchData(url, flag) {
     return new Promise( (resolve, reject) => {
       this.fetchLocalData(url)
         .then(data => {
@@ -30,7 +32,7 @@ export default class DataStore {
           if (data && bool) {
             resolve(data)
           } else {
-            this.fetchNetData(url)
+            this.fetchNetData(url, flag)
               .then(response => {
                 resolve(this._wrapData(response))
               })
@@ -40,7 +42,7 @@ export default class DataStore {
           }
         })
         .catch( err => {
-          this.fetchNetData(url)
+          this.fetchNetData(url, flag)
             .then(res => {
               resolve(this._wrapData(res))
             })
@@ -79,22 +81,36 @@ export default class DataStore {
    * @returns Promise
    * @memberof DataStore
    */
-  fetchNetData(url) {
+  fetchNetData(url,flag) {
     return new Promise( (resolve, reject) => {
-      fetch(url)
-        .then( response => {
-          if (response.ok) {
-            return response.json()
-          }
-          throw new Error('Network response was not ok')
-        })
-        .then( responseData => {
-          this.saveData(url, responseData)
-          resolve(responseData)
-        })
-        .catch( error => {
-          reject(error)
-        })
+      if (flag !== FLAG_STORAGE.flag_trending) {
+        fetch(url)
+          .then( response => {
+            if (response.ok) {
+              return response.json()
+            }
+            throw new Error('Network response was not ok')
+          })
+          .then( responseData => {
+            this.saveData(url, responseData)
+            resolve(responseData)
+          })
+          .catch( error => {
+            reject(error)
+          })
+      } else {
+        new Trending().fetchTrending(url)
+          .then(response => {
+            if (!response) {
+              throw new Error('response is null')
+            }
+            this.saveData(url, response)
+            resolve(response)
+          })
+          .catch( error => {
+            reject(error)
+          })
+      }
     })
   }
 

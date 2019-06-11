@@ -4,11 +4,13 @@ import { connect } from 'react-redux'
 import Actions from '../action/index.js'
 import NavigationUtil from '../navgators/NavigationUtil.js'
 import PopularItem from '../common/PopularItem.js'
+import NavigationBar from '../common/NavigationBar.js'
 import { 
   createMaterialTopTabNavigator,
   createAppContainer
  } from 'react-navigation'
 
+const THEME_COLOR= '#678'
 // 流行
 export default class PopularPage extends Component {
   constructor(props) {
@@ -47,9 +49,21 @@ export default class PopularPage extends Component {
   }
 
   render() {
+    const statusBar = {
+      backgroundColor: THEME_COLOR,
+      barStyle: 'light-content'
+    }
+    const navigationBar = <NavigationBar
+      title={'最热'}
+      statusBar={statusBar}
+      style={{
+        backgroundColor: THEME_COLOR
+      }}
+    ></NavigationBar>
     let Toptab = createAppContainer(this._genTabs())
     return (
       <View style={{height: 160, flex: 1, marginTop: 40}}>
+        {navigationBar}
         <Toptab></Toptab>
       </View>
     )
@@ -123,17 +137,25 @@ class PopularTab extends Component {
   render() {
     const { popular } = this.props;
     const store = popular[this.storeName]
+  
     return (
       <View style={styles.container}>
         <FlatList
           data={store ? store.projectModes : []}
           renderItem={data => this.renderItem(data)}
           keyExtractor={ item => item.id.toString()}
-          onEndReachedThreshold={1}
+          onEndReachedThreshold={0.3}
           ListFooterComponent={() => this.genIndicator()}
           onEndReached={() =>{
-            console.log('/////////onEndReached//////////')
-            this.loadData(true)
+            setTimeout( () => {
+              if (this.canLoadMore) {
+                this.loadData(true)
+                this.canLoadMore = false
+              }
+            }, 100)
+          }}
+          onMomentumScrollBegin={()=>{
+            this.canLoadMore = true
           }}
           refreshControl={
             <RefreshControl
@@ -160,7 +182,7 @@ const mapStateToProps = state => ({
 
 const mapDispatchToProps = dispatch =>({
   onRefreshPopular: (storeName, url, pageSize) => dispatch(Actions.onRefreshPopular(storeName, url, pageSize)),
-  onLoadMorePopular: (storeName, pageIndex, pageSize, dataArray = [], callBack) => dispatch(Actions.onLoadMorePopular(storeName, pageIndex, pageSize, dataArray = [], callBack))
+  onLoadMorePopular: (storeName, pageIndex, pageSize, dataArray, callBack) => dispatch(Actions.onLoadMorePopular(storeName, pageIndex, pageSize, dataArray, callBack))
 })
 
 const PopularTabPage = connect(mapStateToProps, mapDispatchToProps)(PopularTab)

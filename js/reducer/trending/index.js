@@ -4,7 +4,7 @@ const defaultState = {}
 
 export default function(state = defaultState, action) {
   switch (action.type) {
-    case Types.POPULAR_LOAD_MORE_SUCCESS: 
+    case Types.TRENDING_LOAD_MORE_SUCCESS: 
       // 上拉加载成功
       return {
         ...state,
@@ -16,8 +16,9 @@ export default function(state = defaultState, action) {
           pageIndex: action.pageIndex
         }
       }
-    case Types.POPULAR_LOAD_MORE_FAIL: 
+    case Types.TRENDING_LOAD_MORE_FAIL: 
       // 上拉加载失败
+      console.log(action, 'TRENDING_LOAD_MORE_FAIL')
       return {
         ...state,
         [action.storeName]: {
@@ -26,7 +27,8 @@ export default function(state = defaultState, action) {
           pageIndex: action.pageIndex
         }
       }  
-    case Types.POPULAR_REFRESH_SUCCESS:
+    case Types.TRENDING_REFRESH_SUCCESS:
+      console.log(action, 'action/////')
        // 下拉刷新成功
       return {
         ...state,
@@ -39,7 +41,7 @@ export default function(state = defaultState, action) {
           pageIndex: action.pageIndex
         }
       }
-    case Types.POPULAR_REFRESH:
+    case Types.TRENDING_REFRESH:
       // 下拉刷新
       return {
         ...state,
@@ -49,7 +51,7 @@ export default function(state = defaultState, action) {
           hideLoadingMore: true
         }
       }
-    case Types.POPULAR_REFRESH_FAIL:
+    case Types.TRENDING_REFRESH_FAIL:
        // 下拉刷新失败
       return {
         ...state,
