@@ -29,7 +29,7 @@ export default class DataStore {
       this.fetchLocalData(url)
         .then(data => {
           let bool = DataStore.checkTimestampValid(data.timestamp)
-          if (data && bool) {
+          if ( (data.items.length || data.data.length) && bool) {
             resolve(data)
           } else {
             this.fetchNetData(url, flag)

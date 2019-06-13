@@ -3,8 +3,9 @@ import { StyleSheet, FlatList, ActivityIndicator, Text, View, Button, RefreshCon
 import { connect } from 'react-redux'
 import Actions from '../action/index.js'
 import NavigationUtil from '../navgators/NavigationUtil.js'
-import PopularItem from '../common/PopularItem.js'
+import TrendingItem from '../common/TrendingItem.js'
 import NavigationBar from '../common/NavigationBar.js'
+import Trending from 'GitHubTrending'
 import { 
   createMaterialTopTabNavigator,
   createAppContainer
@@ -49,6 +50,9 @@ export default class TrendingPage extends Component {
   }
 
   render() {
+    new Trending().fetchTrending('https://github.com/trending/C?since=daily').then( res => {
+      console.log(res, '////////////')
+    })
     const statusBar = {
       backgroundColor: THEME_COLOR,
       barStyle: 'light-content'
@@ -102,6 +106,7 @@ class TrendingTab extends Component {
   loadData(loadMore) {
     let { onRefreshTrending, onLoadMoreTrending } = this.props
     let url = this.genFetchUrl()
+    console.log(url, 'this.genFetchUrl()')
     const store = this._store()
     if (loadMore) {
       onLoadMoreTrending(this.storeName, ++store.pageIndex, pageSize = 10, store.items, () => {
@@ -129,15 +134,15 @@ class TrendingTab extends Component {
 
   renderItem(data) {
     const item = data.item
-    return <PopularItem item={item} onSelect={ () => {
+    return <TrendingItem item={item} onSelect={ () => {
       console.log('onSelect')
-    }}></PopularItem>
+    }}></TrendingItem>
   }
 
   render() {
     const { trending } = this.props;
     const store = trending[this.storeName]
-  
+    
     return (
       <View style={styles.container}>
         <FlatList

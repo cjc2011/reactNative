@@ -28,7 +28,6 @@ export default function(state = defaultState, action) {
         }
       }  
     case Types.TRENDING_REFRESH_SUCCESS:
-      console.log(action, 'action/////')
        // 下拉刷新成功
       return {
         ...state,
@@ -43,6 +42,7 @@ export default function(state = defaultState, action) {
       }
     case Types.TRENDING_REFRESH:
       // 下拉刷新
+      console.log(action, 'trendingtrending')
       return {
         ...state,
         [action.storeName]: {
