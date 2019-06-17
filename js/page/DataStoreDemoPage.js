@@ -17,7 +17,6 @@ export default class DataStoreDemoPage extends Component {
     getApi.fetchData(url)
       .then(data => {
         let showData = `初次加载事件：${data.timestamp}\n${JSON.stringify(data.data)}`
-        console.log(showData, 'sdsdsdsd')
         this.setState({
           showText: showData
         })

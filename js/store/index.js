@@ -7,11 +7,6 @@ import reducers from '../reducer/index.js'
 import { middlewar } from '../navgators/AppNavigator.js'
 
 const logger = store => next => action => {
-  if (typeof action === 'function') {
-    console.log('dispatching a function')
-  } else {
-    console.log('dispatching', action)
-  }
   const result = next(action)
   console.log('nextState', store.getState)
 }

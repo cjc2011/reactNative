@@ -5,7 +5,6 @@ import Actions from '../action/index.js'
 import NavigationUtil from '../navgators/NavigationUtil.js'
 import TrendingItem from '../common/TrendingItem.js'
 import NavigationBar from '../common/NavigationBar.js'
-import Trending from 'GitHubTrending'
 import { 
   createMaterialTopTabNavigator,
   createAppContainer
@@ -50,9 +49,6 @@ export default class TrendingPage extends Component {
   }
 
   render() {
-    new Trending().fetchTrending('https://github.com/trending/C?since=daily').then( res => {
-      console.log(res, '////////////')
-    })
     const statusBar = {
       backgroundColor: THEME_COLOR,
       barStyle: 'light-content'
@@ -106,7 +102,6 @@ class TrendingTab extends Component {
   loadData(loadMore) {
     let { onRefreshTrending, onLoadMoreTrending } = this.props
     let url = this.genFetchUrl()
-    console.log(url, 'this.genFetchUrl()')
     const store = this._store()
     if (loadMore) {
       onLoadMoreTrending(this.storeName, ++store.pageIndex, pageSize = 10, store.items, () => {

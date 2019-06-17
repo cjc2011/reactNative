@@ -18,7 +18,6 @@ export default function(state = defaultState, action) {
       }
     case Types.TRENDING_LOAD_MORE_FAIL: 
       // 上拉加载失败
-      console.log(action, 'TRENDING_LOAD_MORE_FAIL')
       return {
         ...state,
         [action.storeName]: {
@@ -42,7 +41,6 @@ export default function(state = defaultState, action) {
       }
     case Types.TRENDING_REFRESH:
       // 下拉刷新
-      console.log(action, 'trendingtrending')
       return {
         ...state,
         [action.storeName]: {
