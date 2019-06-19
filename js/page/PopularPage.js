@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { StyleSheet, FlatList, ActivityIndicator, Text, View, Button, RefreshControl} from 'react-native'
+import { DeviceInfo } from 'react-native'
 import { connect } from 'react-redux'
 import Actions from '../action/index.js'
 import NavigationUtil from '../navgators/NavigationUtil.js'
@@ -62,7 +63,7 @@ export default class PopularPage extends Component {
     ></NavigationBar>
     let Toptab = createAppContainer(this._genTabs())
     return (
-      <View style={{height: 160, flex: 1, marginTop: 40}}>
+      <View style={{height: 160, flex: 1, marginTop: DeviceInfo.isIPhonex_deprecated?40:0}}>
         {navigationBar}
         <Toptab></Toptab>
       </View>
@@ -224,3 +225,15 @@ const styles = StyleSheet.create({
     color: '#000000'
   }
 });
+
+function debouce(fnm, wait) {
+  let timer = null 
+  return function(...argument) {
+    if (timer) {
+      clearTimeout(timer)
+    }
+    tiemr = setTimeout( () => {
+      fn.call(this, argument)
+    }, wait)
+  }
+}

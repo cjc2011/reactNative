@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import {View, Image, Text, TouchableOpacity, StyleSheet, Button} from 'react-native'
 import FontAwesome from 'react-native-vector-icons/FontAwesome'
+import HTMLView from 'react-native-htmlview'
 
 export default class TrendingItem extends Component {
   render() {
@@ -20,18 +21,25 @@ export default class TrendingItem extends Component {
         <Text style={styles.title}>
           {item.fullName}
         </Text>
+        <HTMLView
+          value={item.description}
+          onLinkPress={(url)=>{ 
+
+          }}
+          stylesheet={{
+            p: styles.description,
+            a: styles.description
+          }}
+        ></HTMLView>
         <Text style={styles.description}>
-          {item.description}
-        </Text>
-        <Text>
-          {item.description}
+          {item.meta}
         </Text>
         <View style={styles.row}>
           <View style={styles.row}>
-            <Text>Author:</Text>
+            <Text>Built by:</Text>
             {/* 作者头像是一个集合 */}
             {item.contributors.map( (item, index)=> {
-              return <Image style={{height:22,width:22, marginLeft:2}} source={{uri:item}} />
+              return <Image key={index} style={{height:22,width:22, marginLeft:2}} source={{uri:item}} />
             })}
           </View>
           <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
