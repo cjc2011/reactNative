@@ -1,3 +1,6 @@
+/**
+ * 引导页面
+ **/
 import React, {Component} from 'react';
 import {StyleSheet, Text, View} from 'react-native';
 import NavigationUtil from '../navgators/NavigationUtil.js'
@@ -5,8 +8,9 @@ import NavigationUtil from '../navgators/NavigationUtil.js'
 export default class WelcomePage extends Component{
   componentDidMount() {
     setTimeout( () => {
+      console.log(this.props, 'this.props this.props')
       NavigationUtil.resetToHomePage(this.props)
-    }, 500)
+    }, 3500)
   }
 
   componentWillMount() {
@@ -16,7 +20,7 @@ export default class WelcomePage extends Component{
   render() {
     return (
       <View style={styles.container}>
-        <Text style={styles.welcome}>welcome Pag11e</Text>
+        <Text style={styles.welcome}>welcome Pages</Text>
       </View>
     );
   }

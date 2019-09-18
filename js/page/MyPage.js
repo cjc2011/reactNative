@@ -1,3 +1,7 @@
+
+/**
+ * 我的页面
+ **/
 import React, { Component } from 'react'
 import {Platform, StyleSheet, Text, View, TouchableOpacity} from 'react-native'
 import NavigationBar from '../common/NavigationBar.js'

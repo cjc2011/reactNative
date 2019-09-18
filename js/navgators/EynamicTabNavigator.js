@@ -2,8 +2,7 @@
  * Sample React Native App
  * https://github.com/facebook/react-native
  *
- * @format
- * @flow
+ * 最热page
  */
 
 import React, {Component} from 'react';
@@ -19,7 +18,7 @@ import {
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons'
 import EntypoIcons from 'react-native-vector-icons/Entypo'
 import NavigationUtil from './NavigationUtil.js'
-import {BottomTabBar} from 'react-navigation-tabs'
+import { BottomTabBar } from 'react-navigation-tabs'
 import { connect } from 'react-redux'
 
 let iconSize = 26
@@ -89,7 +88,7 @@ class EynamicTabNavigator extends Component{
     }
     const {PopularPage, TrendingPage, FavoritePage, MyPage}  = TABS
     const tabs = { PopularPage, TrendingPage, FavoritePage, MyPage }
-    PopularPage.navigationOptions.tabBarLabel = '最冷'   //动态配置Tab属性
+    PopularPage.navigationOptions.tabBarLabel = '最热'   //动态配置Tab属性
 
     const Navbar = createBottomTabNavigator(tabs, {
       tabBarComponent: props => {

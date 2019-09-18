@@ -225,15 +225,3 @@ const styles = StyleSheet.create({
     color: '#000000'
   }
 });
-
-function debouce(fnm, wait) {
-  let timer = null 
-  return function(...argument) {
-    if (timer) {
-      clearTimeout(timer)
-    }
-    tiemr = setTimeout( () => {
-      fn.call(this, argument)
-    }, wait)
-  }
-}
